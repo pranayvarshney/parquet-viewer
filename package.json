@@ -1,0 +1,85 @@
+{
+  "name": "parquet-viewer",
+  "version": "1.0.0",
+  "description": "Fast, Local-First Desktop Parquet File Viewer & Analytics Tool",
+  "main": "dist-electron/main.js",
+  "author": "Parquet Viewer Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pranayvarshney/parquet-viewer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pranayvarshney/parquet-viewer/issues"
+  },
+  "homepage": "https://github.com/pranayvarshney/parquet-viewer#readme",
+  "scripts": {
+    "dev": "vite",
+    "dev:electron": "tsc -p tsconfig.electron.json && concurrently -k \"vite\" \"electron .\"",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "build": "tsc && vite build && tsc -p tsconfig.electron.json",
+    "dist": "npm run build && electron-builder --mac",
+    "dist:dir": "npm run build && electron-builder --mac --dir",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "io.github.parquetviewer",
+    "productName": "ParquetViewer",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": [
+        "dir",
+        "dmg"
+      ],
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
+    },
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ]
+  },
+  "keywords": [
+    "parquet",
+    "parquet-viewer",
+    "parquet-reader",
+    "arrow",
+    "viewer",
+    "duckdb",
+    "analytics",
+    "data-engineering",
+    "desktop-app",
+    "electron",
+    "react",
+    "typescript"
+  ],
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "hyparquet": "^1.29.0",
+    "hyparquet-compressors": "^1.1.1",
+    "lucide-react": "^1.16.0",
+    "papaparse": "^5.5.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "@types/papaparse": "^5.3.15",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.5.4",
+    "concurrently": "^9.1.2",
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8",
+    "postcss": "^8.5.26",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  }
+}
